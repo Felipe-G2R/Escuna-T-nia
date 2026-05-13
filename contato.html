@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contato &amp; Reserva · Escuna Tânia</title>
+<meta name="description" content="Reserve seu passeio na Escuna Tânia, fale com nossa equipe pelo WhatsApp, e-mail ou formulário. Resposta em até 2 horas em dias úteis." />
+<link rel="icon" href="img/icones/logo-32.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="navbar">
+  <a class="brand" href="index.html">
+    <img src="img/icones/logo-180.jpg" alt="Logo Escuna Tânia" />
+    <span class="brand-text"><span class="brand-name">Escuna Tânia</span><span class="brand-tag">Paraty · Rio de Janeiro</span></span>
+  </a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="roteiros.html">Roteiros</a>
+    <a href="gastronomia.html">Gastronomia</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="contato.html#reservar" class="cta">Reservar</a>
+  </nav>
+  <button class="menu-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</header>
+
+<!-- FORMULÁRIO DE RESERVA · única seção da página -->
+<section class="section section-cream" id="reservar" style="padding-top:160px;">
+  <div class="wrap">
+    <div class="reveal text-center mb-4" style="max-width:680px;margin:0 auto;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">Reservar passeio</span>
+      <h2>Quatro passos. <em>Cinco minutos</em>.</h2>
+      <p style="font-family:var(--font-sans);font-size:15px;color:var(--ink-soft);">Preencha o formulário abaixo e devolvemos com o resumo da reserva, o valor final e o link de pagamento. A vaga é confirmada quando o sinal é recebido.</p>
+    </div>
+    <div class="reveal glass-card" style="max-width:760px;margin:0 auto;padding:40px;">
+      <form data-reserve-form>
+        <!-- Passo 1: Data & passageiros -->
+        <div style="margin-bottom:28px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.10em;color:var(--accent);margin-bottom:14px;">PASSO 01 · DATA &amp; PASSAGEIROS</div>
+          <div class="form-row">
+            <div class="form-field"><label>Data desejada</label><input type="date" name="date" required /></div>
+            <div class="form-field"><label>Passageiros</label><input type="number" name="people" min="1" max="90" placeholder="ex: 4" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>Adultos</label><input type="number" name="adults" min="1" placeholder="ex: 2" /></div>
+            <div class="form-field"><label>Crianças (6 a 10 anos)</label><input type="number" name="kids" min="0" placeholder="ex: 1" /></div>
+          </div>
+        </div>
+
+        <!-- Passo 2: Roteiro & extras -->
+        <div style="margin-bottom:28px;border-top:1px solid var(--line);padding-top:24px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.10em;color:var(--accent);margin-bottom:14px;">PASSO 02 · ROTEIRO &amp; EXTRAS</div>
+          <div class="form-field">
+            <label>Pacote</label>
+            <select name="package">
+              <option>Passeio padrão · 6 horas, 6 paradas</option>
+              <option>Passeio + Área VIP (R$ 50/pessoa)</option>
+              <option>Passeio + Hidromassagem privativa (R$ 400)</option>
+              <option>Fretamento completo · até 90 pessoas</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Quer adicionar fotógrafo profissional?</label>
+            <select name="photo"><option>Não</option><option>Sim · sob orçamento</option></select>
+          </div>
+        </div>
+
+        <!-- Passo 3: Gastronomia -->
+        <div style="margin-bottom:28px;border-top:1px solid var(--line);padding-top:24px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.10em;color:var(--accent);margin-bottom:14px;">PASSO 03 · ALMOÇO &amp; RESTRIÇÕES</div>
+          <div class="form-field">
+            <label>Preferência de prato principal</label>
+            <select name="meal">
+              <option>Vou escolher no embarque</option>
+              <option>Alma Caiçara · moqueca</option>
+              <option>Mar &amp; Sol · camarão na moranga</option>
+              <option>Peixada de Paraty</option>
+              <option>Vegetariano · risoto de palmito juçara</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Restrições alimentares ou alergias?</label>
+            <input type="text" name="diet" placeholder="ex: alergia a frutos do mar, sem glúten, sem lactose" />
+          </div>
+        </div>
+
+        <!-- Passo 4: Contato -->
+        <div style="margin-bottom:28px;border-top:1px solid var(--line);padding-top:24px;">
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.10em;color:var(--accent);margin-bottom:14px;">PASSO 04 · SEUS DADOS</div>
+          <div class="form-row">
+            <div class="form-field"><label>Nome completo</label><input type="text" name="name" required /></div>
+            <div class="form-field"><label>WhatsApp</label><input type="tel" name="phone" placeholder="(24) 99945-0356" required /></div>
+          </div>
+          <div class="form-field"><label>E-mail</label><input type="email" name="email" required /></div>
+          <div class="form-field"><label>Como conheceu a Tânia? (opcional)</label><input type="text" name="source" placeholder="Instagram, indicação de amigo, Google..." /></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Enviar pedido de reserva →</button>
+        <p style="font-family:var(--font-sans);font-size:12px;color:var(--ink-soft);text-align:center;margin-top:16px;">Ao enviar, abrimos o WhatsApp com o resumo. A vaga é confirmada após o pagamento do sinal acordado.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="brand-block">
+        <img class="logo" src="img/icones/logo-192.jpg" alt="Logo Escuna Tânia" />
+        <h3>Escuna Tânia</h3>
+        <p>O luxo náutico em Paraty — gastronomia, conforto e respeito ao mar.</p>
+      </div>
+      <div><h4>Serviços</h4><ul><li><a href="roteiros.html">Roteiros e paradas</a></li><li><a href="gastronomia.html">Gastronomia</a></li><li><a href="eventos.html">Locação e eventos</a></li><li><a href="contato.html#reservar">Reservar passeio</a></li></ul></div>
+      <div><h4>Empresa</h4><ul><li><a href="#">Trabalhe conosco</a></li><li><a href="#">Seja parceiro</a></li></ul></div>
+      <div><h4>Suporte</h4><ul><li><a href="#">Política de privacidade</a></li><li><a href="#">Termos de uso</a></li><li><a href="#">Política de reembolso</a></li><li><a href="https://wa.me/5524999450356" target="_blank" rel="noopener">Central de ajuda</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <div class="cadastur"><img src="img/icones/cadastur.png" alt="" style="filter:brightness(0) invert(1);" />Cadastur · Ministério do Turismo</div>
+        <span>© 2026 Escuna Tânia · Paraty, RJ</span>
+      </div>
+      <div class="socials"><a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8a4 4 0 0 1 3.4 3.4z"/></svg></a><a href="#" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.4L2 22l4.7-1.6a11 11 0 0 0 13.8-16.9z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5524999450356" class="fab-wa" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.4L2 22l4.7-1.6a11 11 0 0 0 13.8-16.9z"/></svg>
+</a>
+
+<script src="app.js"></script>
+</body>
+</html>

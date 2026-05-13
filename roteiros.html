@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Roteiros · Escuna Tânia · 6 paradas em 6 horas</title>
+<meta name="description" content="O roteiro completo da Escuna Tânia: 6 horas de navegação, 6 paradas em ilhas e enseadas de Paraty, área VIP, hidromassagem, gastronomia e infraestrutura completa." />
+<link rel="icon" href="img/icones/logo-32.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<!-- Leaflet (mapa interativo open-source, sem API key) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+<body>
+
+<header class="navbar">
+  <a class="brand" href="index.html">
+    <img src="img/icones/logo-180.jpg" alt="Logo Escuna Tânia" />
+    <span class="brand-text"><span class="brand-name">Escuna Tânia</span><span class="brand-tag">Paraty · Rio de Janeiro</span></span>
+  </a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="roteiros.html" class="active">Roteiros</a>
+    <a href="gastronomia.html">Gastronomia</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="contato.html#reservar" class="cta">Reservar</a>
+  </nav>
+  <button class="menu-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</header>
+
+<!-- HERO com 4 colunas de frames + vídeo VERTICAL liquid glass -->
+<section class="hero hero-split" id="hero">
+  <div class="bg bg-strips" aria-hidden="true">
+    <div class="hero-strip"><img src="img/frames/roteiro-1.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/roteiro-2.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/roteiro-3.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/roteiro-4.jpg" alt="" /></div>
+  </div>
+  <div class="content content-split content-split-reversed">
+    <!-- Vídeo vertical com bordas liquid glass (ESQUERDA) -->
+    <div class="hero-video-wrap">
+      <div class="video-portrait hero-portrait-frame">
+        <video id="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="img/tania-pic.jpg" aria-label="Roteiro da Escuna Tânia em Paraty">
+          <source src="video/roteiro.mp4" type="video/mp4" />
+        </video>
+        <div class="vp-caption">
+          <strong>O roteiro em movimento</strong>
+          <span style="opacity:0.85;">6 paradas · águas de Paraty</span>
+        </div>
+        <button id="hero-audio-toggle" class="glass-pill glass-pill-dark" type="button" aria-pressed="false" style="position:absolute;top:18px;right:18px;cursor:pointer;border:1px solid rgba(255,255,255,0.3);z-index:3;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <span class="label">Ativar som</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Texto (DIREITA) -->
+    <div class="hero-text">
+      <span class="eyebrow">O roteiro</span>
+      <h1>Roteiro contemplativo,<br><em>um tempo para sentir</em> o mar.</h1>
+      <p class="lede">Seis paradas. Seis horas. Saída às 10h do centro histórico de Paraty. Cada parada tem propósito — nadar, mergulhar, almoçar, contemplar. Sem pressa.</p>
+      <div class="actions">
+        <a href="#mapa" class="btn btn-glass btn-lg">Ver o mapa</a>
+        <a href="contato.html#reservar" class="btn btn-primary btn-lg">Reservar</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Role para o mapa</div>
+</section>
+
+<!-- MAPA GOOGLE INTERATIVO -->
+<section class="section section-cream" id="mapa">
+  <div class="wrap">
+    <div class="reveal text-center mb-4" style="max-width:720px;margin:0 auto;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">A rota · mapa ao vivo</span>
+      <h2>O percurso da <em>Tânia</em> pela baía.</h2>
+      <p style="font-family:var(--font-sans);font-size:15px;color:var(--ink-soft);">Cada pino é uma parada real do nosso roteiro. Passe o cursor em um número para ver <strong>4 imagens</strong> daquele local. Use o mapa do Google ao fundo para navegar, dar zoom e abrir em rota.</p>
+    </div>
+
+    <!-- Mapa Leaflet interativo · rota desenhada + 6 pontos com foto real -->
+    <div class="map-stage reveal" id="map-stage" aria-label="Mapa interativo do roteiro da Escuna Tânia">
+      <div id="route-map"
+           data-stops='[
+             {"n":"01","name":"Ilha Comprida","time":"~10h30","tag":"Snorkel","lat":-23.1909,"lng":-44.6228,"img":"img/destinos/ilha-comprida.webp","desc":"Aquário natural raso onde cardumes coloridos passam entre as pernas. Snorkel para iniciantes — primeira parada para quem nunca fez."},
+             {"n":"02","name":"Praia da Lula","time":"~11h30","tag":"Banho","lat":-23.1967,"lng":-44.6296,"img":"img/destinos/praia-da-lula.jpg","desc":"Areia branca, águas calmas, sem ondas. Banho de mar tradicional, ótimo para crianças pequenas."},
+             {"n":"03","name":"Lagoa Azul","time":"~12h15","tag":"Mergulho","lat":-23.2045,"lng":-44.6213,"img":"img/destinos/lagoa-azul.jpg","desc":"A parada favorita. Águas mais transparentes da baía. Mergulho demorado, fotos subaquáticas, tempo para tudo."},
+             {"n":"04","name":"Ilha dos Cocos","time":"~13h00","tag":"Natureza","lat":-23.2017,"lng":-44.5818,"img":"img/destinos/ilha-cocos.jpg","desc":"Águas limpas, encontros com tartarugas marinhas (sazonal), coqueirais — área de natureza preservada."},
+             {"n":"05","name":"Praia Vermelha","time":"~14h00","tag":"Almoço","lat":-23.1959,"lng":-44.6446,"img":"img/destinos/praia-vermelha.jpg","desc":"Almoço com Menu do Chef caiçara — peixe fresco, banana da terra, taioba. Vista para a praia."},
+             {"n":"06","name":"Ilha do Mantimento","time":"~15h15","tag":"Histórico","lat":-23.1850,"lng":-44.6582,"img":"img/destinos/ilha-mantimento.jpg","desc":"Castelo histórico em meio a palmeiras imperiais — encerramento cinematográfico do dia."}
+           ]'
+           data-marina='{"lat":-23.2200,"lng":-44.7115,"name":"Cais de Turismo · Paraty"}'
+           data-waypoints='{
+             "marina_to_01":[[-23.2150,-44.6900],[-23.2050,-44.6650],[-23.1980,-44.6400]],
+             "01_to_02":[[-23.1920,-44.6260]],
+             "02_to_03":[[-23.2000,-44.6280],[-23.2040,-44.6240]],
+             "03_to_04":[[-23.2090,-44.6100],[-23.2080,-44.5950]],
+             "04_to_05":[[-23.1950,-44.5950],[-23.1900,-44.6200],[-23.1940,-44.6400]],
+             "05_to_06":[[-23.1900,-44.6520]],
+             "06_to_marina":[[-23.1920,-44.6700],[-23.2000,-44.6900],[-23.2130,-44.7050]]
+           }'>
+      </div>
+    </div>
+
+    <!-- Legenda do mapa -->
+    <div class="map-legend reveal">
+      <div class="leg-item"><span class="leg-num">01</span> Ilha Comprida</div>
+      <div class="leg-item"><span class="leg-num">02</span> Praia da Lula</div>
+      <div class="leg-item"><span class="leg-num">03</span> Lagoa Azul</div>
+      <div class="leg-item"><span class="leg-num">04</span> Ilha dos Cocos</div>
+      <div class="leg-item"><span class="leg-num">05</span> Praia Vermelha</div>
+      <div class="leg-item"><span class="leg-num">06</span> Ilha do Mantimento</div>
+      <a class="leg-item" href="https://www.google.com/maps/dir/?api=1&origin=Marina+Cais+Santa+Rita,+Paraty&destination=Lagoa+Azul,+Paraty&travelmode=driving" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600;">↗ Abrir rota no Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6 DESTINOS DETALHADOS -->
+<section class="section">
+  <div class="wrap">
+    <div class="reveal mb-4" style="max-width:680px;">
+      <span class="eyebrow">Cada parada</span>
+      <h2>As <em>seis paradas</em> em detalhe.</h2>
+    </div>
+    <div class="destinos">
+      <article class="destino reveal" id="ilha-comprida">
+        <div class="bg bg-1"><img src="img/destinos/ilha-comprida.webp" alt="Ilha Comprida — águas rasas e cristalinas em Paraty" loading="lazy" /></div>
+        <div class="info"><div class="stop-num">PARADA 01 · ~10h30</div><h3>Ilha Comprida</h3><p>Aquário natural raso onde cardumes coloridos passam entre as pernas. Snorkel para iniciantes — primeira parada para quem nunca fez.</p></div>
+      </article>
+      <article class="destino reveal" id="praia-lula">
+        <div class="bg bg-2"><img src="img/destinos/praia-da-lula.jpg" alt="Praia da Lula — areia branca e águas calmas em Paraty" loading="lazy" /></div>
+        <div class="info"><div class="stop-num">PARADA 02 · ~11h30</div><h3>Praia da Lula</h3><p>Areia branca, águas calmas, sem ondas. A parada de banho de mar tradicional — bom para quem viaja com crianças pequenas.</p></div>
+      </article>
+      <article class="destino reveal" id="lagoa-azul">
+        <div class="bg bg-3"><img src="img/destinos/lagoa-azul.jpg" alt="Lagoa Azul — águas turquesa transparentes em Paraty" loading="lazy" /></div>
+        <div class="info"><div class="stop-num">PARADA 03 · ~12h15</div><h3>Lagoa Azul</h3><p>A parada favorita. Águas mais transparentes da baía. Mergulho demorado, fotos subaquáticas, tempo para tudo.</p></div>
+      </article>
+      <article class="destino reveal" id="ilha-cocos">
+        <div class="bg bg-4"><img src="img/destinos/ilha-cocos.jpg" alt="Ilha dos Cocos — coqueiral e mata preservada" loading="lazy" /></div>
+        <div class="info"><div class="stop-num">PARADA 04 · ~13h00</div><h3>Ilha dos Cocos</h3><p>Águas limpas, encontros com tartarugas marinhas (sazonal), coqueirais — área de natureza preservada.</p></div>
+      </article>
+      <article class="destino reveal" id="praia-vermelha">
+        <div class="bg bg-5"><img src="img/destinos/praia-vermelha.jpg" alt="Praia Vermelha — almoço caiçara servido a bordo" loading="lazy" /></div>
+        <div class="info"><div class="stop-num">PARADA 05 · ~14h00</div><h3>Praia Vermelha</h3><p>Almoço servido a bordo com Menu do Chef caiçara — peixe fresco, banana da terra, taioba. Vista para a praia.</p></div>
+      </article>
+      <article class="destino reveal" id="mantimento">
+        <div class="bg bg-6"><img src="img/destinos/ilha-mantimento.jpg" alt="Ilha do Mantimento — castelo histórico e palmeiras imperiais" loading="lazy" /></div>
+        <div class="info"><div class="stop-num">PARADA 06 · ~15h15</div><h3>Ilha do Mantimento</h3><p>Castelo histórico em meio a palmeiras imperiais — encerramos o passeio em um cenário cinematográfico.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- INFO DO PASSEIO -->
+<section class="section section-cream" id="info">
+  <div class="wrap">
+    <div class="reveal text-center mb-4" style="max-width:680px;margin:0 auto;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">Informações do passeio</span>
+      <h2>O que você <em>precisa saber</em>.</h2>
+    </div>
+    <div class="features">
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:24px;">🕒</div><h4>Horário</h4><p><strong>Embarque 10h · retorno 16h.</strong> Chegue 15 minutos antes. Tolerância máxima: 15 minutos.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:24px;">⏱️</div><h4>Duração</h4><p><strong>6 horas</strong> de navegação efetiva, com paradas variando de 30 a 75 minutos cada.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:24px;">📍</div><h4>Saída</h4><p>Centro Histórico de <strong>Paraty / RJ</strong>. O endereço exato do cais e as orientações de chegada chegam por WhatsApp após a confirmação da reserva.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:24px;">👨‍👩‍👧</div><h4>Crianças</h4><p>Até 5 anos <strong>gratuito</strong>. De 6 a 10, meia-entrada. Coletes infantis disponíveis a bordo.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:24px;">🌧️</div><h4>Clima</h4><p>Em caso de impeditivo meteorológico (decisão da Marinha), <strong>remarcação sem custo</strong> para outra data.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:24px;">💳</div><h4>Pagamento</h4><p>Reserva confirmada com sinal · Pix, cartão ou transferência. Saldo combinado na confirmação.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIP & HIDROMASSAGEM -->
+<section class="section" id="vip">
+  <div class="wrap">
+    <div class="reveal text-center mb-4" style="max-width:680px;margin:0 auto;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">Experiências exclusivas</span>
+      <h2>Para quem quer um <em>passeio dentro do passeio</em>.</h2>
+    </div>
+    <div class="two-col">
+      <div class="glass-card reveal" style="padding:40px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px;">
+          <span class="glass-pill" style="background:var(--accent-fade);color:var(--accent);border-color:rgba(115,35,60,0.2);">ÁREA VIP</span>
+          <div style="text-align:right;"><div style="font-family:var(--font-display);font-size:32px;color:var(--accent);line-height:1;">R$ 50</div><div style="font-family:var(--font-sans);font-size:11px;color:var(--ink-soft);">por pessoa</div></div>
+        </div>
+        <h3 style="margin-bottom:14px;">Deck superior privativo</h3>
+        <p style="font-family:var(--font-sans);font-size:14.5px;color:var(--ink-soft);line-height:1.6;">Acesso ao deck superior reservado, espreguiçadeiras dedicadas, cortesia de duas taças de espumante por pessoa e atendimento priorizado no bar. Ambiente mais reservado, vista privilegiada.</p>
+        <ul style="font-family:var(--font-sans);font-size:13.5px;color:var(--ink-2);line-height:1.8;padding-left:20px;margin-top:18px;">
+          <li>Espreguiçadeiras reservadas (não compartilhadas)</li>
+          <li>Garrafa de espumante cortesia</li>
+          <li>Atendimento priorizado no bar</li>
+          <li>Acesso ao deck superior privativo</li>
+        </ul>
+      </div>
+      <div class="glass-card reveal" style="padding:40px;background:linear-gradient(135deg,var(--glass-tint-sun),rgba(255,255,255,0.55));">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px;">
+          <span class="glass-pill" style="background:rgba(252,232,196,0.4);color:var(--ink-2);">HIDROMASSAGEM PRIVATIVA</span>
+          <div style="text-align:right;"><div style="font-family:var(--font-display);font-size:32px;color:var(--accent);line-height:1;">R$ 400</div><div style="font-family:var(--font-sans);font-size:11px;color:var(--ink-soft);">por sessão</div></div>
+        </div>
+        <h3 style="margin-bottom:14px;">Suíte com banheira aquecida</h3>
+        <p style="font-family:var(--font-sans);font-size:14.5px;color:var(--ink-soft);line-height:1.6;">Reserve a suíte com hidromassagem privativa por sessão de 1 hora. Banheira aquecida com vista para o mar, atendimento exclusivo, opção de massagem (sob agendamento).</p>
+        <ul style="font-family:var(--font-sans);font-size:13.5px;color:var(--ink-2);line-height:1.8;padding-left:20px;margin-top:18px;">
+          <li>Uso privativo da suíte com hidromassagem</li>
+          <li>Banheira aquecida com vista para o mar</li>
+          <li>Garrafa de espumante cortesia</li>
+          <li>Reserva com antecedência</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFRAESTRUTURA -->
+<section class="section section-cream" id="infraestrutura">
+  <div class="wrap">
+    <div class="reveal mb-4" style="max-width:680px;">
+      <span class="eyebrow">Infraestrutura a bordo</span>
+      <h2>Tudo que você precisa, <em>já está aqui</em>.</h2>
+    </div>
+    <div class="features" style="grid-template-columns:repeat(3,1fr);">
+      <div class="feature reveal lift-on-hover"><div class="ico"><img src="img/icones/banheiro.png" alt="" /></div><h4>Áreas climatizadas</h4><p>Salão interno com ar-condicionado, ideal para crianças e idosos nos dias quentes.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:22px;">📶</div><h4>Wi-Fi a bordo</h4><p>Conexão de cortesia funcionando em todas as áreas da escuna durante o passeio.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:22px;">🛝</div><h4>Toboágua para o mar</h4><p>Escorrega diretamente do deck para a água — diversão garantida para todas as idades.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:22px;">🚤</div><h4>Bote de apoio</h4><p>Embarcação auxiliar para chegar até praias rasas e dar suporte às atividades.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico"><img src="img/icones/snorkel.png" alt="" /></div><h4>Snorkel completo</h4><p>Máscaras, snorkels e nadadeiras de todos os tamanhos disponíveis sem custo extra.</p></div>
+      <div class="feature reveal lift-on-hover"><div class="ico" style="font-size:22px;">📸</div><h4>Fotógrafo profissional</h4><p>Cobertura completa, fotos editadas digitalmente em até 7 dias. Opcional, sob reserva.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGURANÇA -->
+<section class="section" id="seguranca">
+  <div class="wrap">
+    <div class="reveal mb-4" style="max-width:680px;">
+      <span class="eyebrow">Segurança e política</span>
+      <h2>Por que <em>navegamos com calma</em>.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;">
+      <div class="list-card reveal lift-on-hover">
+        <h4>Operação Marinha do Brasil</h4>
+        <p>Toda navegação obedece protocolos da Marinha. Em condições impeditivas, o passeio é remarcado sem custo.</p>
+      </div>
+      <div class="list-card reveal lift-on-hover">
+        <h4>Tripulação treinada</h4>
+        <p>Comandante, marinheiros e auxiliares com cursos de salvatagem e atendimento de emergência atualizados.</p>
+      </div>
+      <div class="list-card reveal lift-on-hover">
+        <h4>Coletes de todas as idades</h4>
+        <p>Coletes salva-vidas dimensionados para adultos, crianças e bebês. Disponíveis no embarque.</p>
+      </div>
+      <div class="list-card reveal lift-on-hover">
+        <h4>Política de gratuidade infantil</h4>
+        <p>Crianças até 5 anos não pagam. De 6 a 10, meia-entrada. A partir de 11, valor integral.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA RESERVA -->
+<section class="section section-dark" id="reservar">
+  <div class="wrap text-center" style="max-width:680px;margin:0 auto;">
+    <span class="eyebrow" style="margin-left:auto;margin-right:auto;">Vagas limitadas</span>
+    <h2 style="color:white;">Próximas <em>partidas disponíveis</em>.</h2>
+    <p style="color:rgba(255,255,255,0.72);font-family:var(--font-sans);font-size:15px;max-width:520px;margin:18px auto 32px;">Operamos diariamente. Recomendamos reservar com pelo menos 7 dias de antecedência — finais de semana e feriados costumam esgotar.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="contato.html#reservar" class="btn btn-primary btn-lg">Reservar agora</a>
+      <a href="https://wa.me/5524999450356" class="btn btn-wa btn-lg" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="brand-block">
+        <img class="logo" src="img/icones/logo-192.jpg" alt="Logo Escuna Tânia" />
+        <h3>Escuna Tânia</h3>
+        <p>O luxo náutico em Paraty — gastronomia, conforto e respeito ao mar.</p>
+      </div>
+      <div><h4>Serviços</h4><ul><li><a href="roteiros.html">Roteiros e paradas</a></li><li><a href="gastronomia.html">Gastronomia</a></li><li><a href="eventos.html">Locação e eventos</a></li><li><a href="contato.html#reservar">Reservar passeio</a></li></ul></div>
+      <div><h4>Empresa</h4><ul><li><a href="#">Trabalhe conosco</a></li><li><a href="#">Seja parceiro</a></li></ul></div>
+      <div><h4>Suporte</h4><ul><li><a href="#">Política de privacidade</a></li><li><a href="#">Termos de uso</a></li><li><a href="#">Política de reembolso</a></li><li><a href="https://wa.me/5524999450356" target="_blank" rel="noopener">Central de ajuda</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <div class="cadastur"><img src="img/icones/cadastur.png" alt="" style="filter:brightness(0) invert(1);" />Cadastur · Ministério do Turismo</div>
+        <span>© 2026 Escuna Tânia · Paraty, RJ</span>
+      </div>
+      <div class="socials"><a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8a4 4 0 0 1 3.4 3.4z"/></svg></a><a href="#" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.4L2 22l4.7-1.6a11 11 0 0 0 13.8-16.9z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5524999450356" class="fab-wa" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.4L2 22l4.7-1.6a11 11 0 0 0 13.8-16.9z"/></svg>
+</a>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+<script src="route-map.js" defer></script>
+<script src="app.js"></script>
+</body>
+</html>

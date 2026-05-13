@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Eventos &amp; Locação · Escuna Tânia</title>
+<meta name="description" content="A Escuna Tânia como cenário do seu evento: mini-weddings ao pôr do sol, eventos corporativos, lançamentos de produto e captação publicitária na baía de Paraty." />
+<link rel="icon" href="img/icones/logo-32.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="navbar">
+  <a class="brand" href="index.html">
+    <img src="img/icones/logo-180.jpg" alt="Logo Escuna Tânia" />
+    <span class="brand-text"><span class="brand-name">Escuna Tânia</span><span class="brand-tag">Paraty · Rio de Janeiro</span></span>
+  </a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="roteiros.html">Roteiros</a>
+    <a href="gastronomia.html">Gastronomia</a>
+    <a href="eventos.html" class="active">Eventos</a>
+    <a href="contato.html#reservar" class="cta">Reservar</a>
+  </nav>
+  <button class="menu-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</header>
+
+<!-- HERO com 4 frames de fundo + vídeo VERTICAL liquid glass -->
+<section class="hero hero-split" id="hero">
+  <div class="bg bg-strips" aria-hidden="true">
+    <div class="hero-strip"><img src="img/frames/eventos-1.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/eventos-2.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/eventos-3.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/eventos-4.jpg" alt="" /></div>
+  </div>
+  <div class="content content-split">
+    <div class="hero-text">
+      <span class="eyebrow">Locação &amp; eventos</span>
+      <h1>Experiências exclusivas<br><em>a bordo</em>.</h1>
+      <p class="lede">Casamentos íntimos ao pôr do sol. Eventos corporativos que premiam de verdade. Captações publicitárias com a Costa Verde como cenário. A Tânia inteira é sua.</p>
+      <div class="actions">
+        <a href="#cotacao" class="btn btn-primary btn-lg">Solicitar cotação</a>
+        <a href="https://wa.me/5524999450356" class="btn btn-glass btn-lg" target="_blank" rel="noopener">Falar com a equipe</a>
+      </div>
+    </div>
+
+    <!-- Vídeo vertical com bordas liquid glass -->
+    <div class="hero-video-wrap">
+      <div class="video-portrait hero-portrait-frame">
+        <video id="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="img/tania-pic.jpg" aria-label="Viagem com a galera na Escuna Tânia">
+          <source src="video/viagem-galera.mp4" type="video/mp4" />
+        </video>
+        <div class="vp-caption">
+          <strong>Viagem com a galera</strong>
+          <span style="opacity:0.85;">A bordo · Costa Verde</span>
+        </div>
+        <button id="hero-audio-toggle" class="glass-pill glass-pill-dark" type="button" aria-pressed="false" style="position:absolute;top:18px;right:18px;cursor:pointer;border:1px solid rgba(255,255,255,0.3);z-index:3;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <span class="label">Ativar som</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 TIPOS DE EVENTO -->
+<section class="section">
+  <div class="wrap">
+    <div class="reveal text-center mb-4" style="max-width:680px;margin:0 auto;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">Três modalidades</span>
+      <h2>Que tipo de evento a Tânia <em>pode receber</em>?</h2>
+    </div>
+    <div class="pillars">
+      <article class="pillar reveal lift-on-hover" id="wedding" style="background:linear-gradient(155deg,var(--glass-tint-sun),rgba(255,255,255,0.55));">
+        <div class="num">01 · CELEBRAÇÃO</div>
+        <h3>Mini Wedding ao pôr do sol</h3>
+        <p>Celebre o amor em um cenário digno de cinema. O mini wedding a bordo combina a sofisticação de um evento privado com o charme rústico de Paraty.</p>
+        <ul style="font-family:var(--font-sans);font-size:13.5px;line-height:1.7;color:var(--ink-2);padding-left:18px;margin-top:14px;">
+          <li>Casamentos intimistas e renovação de votos</li>
+          <li>Roteiro personalizado para fotos</li>
+          <li>Suporte para montagem de buffet</li>
+          <li>Tripulação qualificada</li>
+        </ul>
+        <a href="#cotacao" class="btn btn-ghost mt-2" style="align-self:flex-start;">Solicitar pacote wedding →</a>
+      </article>
+      <article class="pillar reveal lift-on-hover" id="corporativo">
+        <div class="num">02 · CORPORATIVO</div>
+        <h3>Eventos &amp; incentivos</h3>
+        <p>Potencialize os resultados da sua empresa com convenções, reuniões de diretoria ou campanhas de incentivo em um ambiente náutico de alto padrão.</p>
+        <ul style="font-family:var(--font-sans);font-size:13.5px;line-height:1.7;color:var(--ink-2);padding-left:18px;margin-top:14px;">
+          <li>Networking, lançamentos de produtos e premiações de equipes</li>
+          <li>Privacidade total</li>
+          <li>Sistema de som profissional</li>
+          <li>Áreas para reuniões</li>
+        </ul>
+        <a href="#cotacao" class="btn btn-ghost mt-2" style="align-self:flex-start;">Solicitar pacote corporativo →</a>
+      </article>
+      <article class="pillar reveal lift-on-hover" id="cenografia" style="background:linear-gradient(155deg,var(--glass-tint-mar),rgba(255,255,255,0.55));">
+        <div class="num">03 · PRODUÇÃO</div>
+        <h3>Cenografia &amp; captação publicitária</h3>
+        <p>A Escuna Tânia é a locação estratégica para agências e produtoras que buscam <strong>luz natural perfeita</strong> e <strong>ângulos exclusivos</strong> da Baía de Paraty.</p>
+        <ul style="font-family:var(--font-sans);font-size:13.5px;line-height:1.7;color:var(--ink-2);padding-left:18px;margin-top:14px;">
+          <li>Campanhas de moda</li>
+          <li>Vídeos comerciais</li>
+          <li>Catálogos de marcas</li>
+          <li>Press days e ações com influenciadores</li>
+        </ul>
+        <a href="#cotacao" class="btn btn-ghost mt-2" style="align-self:flex-start;">Solicitar diária de produção →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LANÇAMENTOS DE PRODUTO -->
+<section class="section section-cream" id="lancamentos">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="reveal">
+        <span class="eyebrow">Lançamentos de produto · B2B</span>
+        <h2>Quando o lançamento <em>precisa surpreender</em>.</h2>
+        <p style="font-family:var(--font-sans);font-size:15px;color:var(--ink-2);line-height:1.7;">Sair do óbvio é o primeiro passo para uma estratégia de marketing de sucesso. Quando sua marca precisa causar impacto, o ambiente físico do evento desempenha um papel crucial. A Escuna Tânia entrega uma <strong>plataforma flutuante de experiências exclusivas</strong> para lançamentos de alto padrão.</p>
+        <p style="font-family:var(--font-sans);font-size:15px;color:var(--ink-2);line-height:1.7;">Para o mercado B2B, a exclusividade garante o <em>share of mind</em> que sua empresa busca. Nossa equipe está pronta para organizar a logística do seu evento corporativo.</p>
+        <a href="#cotacao" class="btn btn-primary mt-2">Solicitar proposta para lançamento →</a>
+      </div>
+      <div class="reveal">
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+          <div class="glass-card" style="padding:24px;text-align:center;">
+            <div style="font-family:var(--font-display);font-size:22px;color:var(--accent);line-height:1.15;">Ambiente<br>Instagramável</div>
+            <div style="font-family:var(--font-sans);font-size:11.5px;color:var(--ink-soft);margin-top:10px;letter-spacing:0.06em;line-height:1.5;">cenários naturais que potencializam o alcance orgânico nas redes</div>
+          </div>
+          <div class="glass-card" style="padding:24px;text-align:center;">
+            <div style="font-family:var(--font-display);font-size:22px;color:var(--accent);line-height:1.15;">Privacidade<br>Total</div>
+            <div style="font-family:var(--font-sans);font-size:11.5px;color:var(--ink-soft);margin-top:10px;letter-spacing:0.06em;line-height:1.5;">grupos fechados, foco total na sua marca</div>
+          </div>
+          <div class="glass-card" style="padding:24px;text-align:center;">
+            <div style="font-family:var(--font-display);font-size:22px;color:var(--accent);line-height:1.15;">Infraestrutura<br>Completa</div>
+            <div style="font-family:var(--font-sans);font-size:11.5px;color:var(--ink-soft);margin-top:10px;letter-spacing:0.06em;line-height:1.5;">som de alta qualidade, áreas cobertas, banheiros, suporte para catering</div>
+          </div>
+          <div class="glass-card" style="padding:24px;text-align:center;">
+            <div style="font-family:var(--font-display);font-size:22px;color:var(--accent);line-height:1.15;">Press<br>Days</div>
+            <div style="font-family:var(--font-sans);font-size:11.5px;color:var(--ink-soft);margin-top:10px;letter-spacing:0.06em;line-height:1.5;">imprensa em ambiente descontraído para gerar matérias e reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COTAÇÃO -->
+<section class="section section-dark" id="cotacao">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="reveal">
+        <span class="eyebrow">Solicitar cotação</span>
+        <h2 style="color:white;">Conte para a gente <em>o que você imagina</em>.</h2>
+        <p style="color:rgba(255,255,255,0.72);font-family:var(--font-sans);font-size:15px;line-height:1.7;">Respondemos em até 2 horas em dias úteis. Para cotações urgentes, prefira o WhatsApp.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px;">
+          <a href="https://wa.me/5524999450356" class="btn btn-wa" target="_blank" rel="noopener" style="justify-content:center;">📱 WhatsApp direto · resposta em minutos</a>
+          <a href="mailto:eventos@escunataniaparaty.com.br" class="btn btn-glass" style="justify-content:center;">✉ eventos@escunataniaparaty.com.br</a>
+          <a href="tel:+5524999450356" class="btn btn-glass" style="justify-content:center;">📞 +55 (24) 99945-0356</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <form data-contact-form class="form-glass">
+          <div class="form-field">
+            <label>Tipo de evento</label>
+            <select name="subject">
+              <option>Mini Wedding</option>
+              <option>Evento corporativo</option>
+              <option>Lançamento de produto</option>
+              <option>Captação publicitária</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Data desejada</label>
+              <input type="date" name="date" />
+            </div>
+            <div class="form-field">
+              <label>Convidados</label>
+              <input type="number" name="guests" placeholder="ex: 40" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Seu nome</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="form-field">
+            <label>WhatsApp ou e-mail</label>
+            <input type="text" name="contact" required />
+          </div>
+          <div class="form-field">
+            <label>Detalhes (opcional)</label>
+            <textarea name="message" rows="3" placeholder="Conte sobre o tema, preferências de cardápio, restrições..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Solicitar proposta personalizada</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="brand-block">
+        <img class="logo" src="img/icones/logo-192.jpg" alt="Logo Escuna Tânia" />
+        <h3>Escuna Tânia</h3>
+        <p>O luxo náutico em Paraty — gastronomia, conforto e respeito ao mar.</p>
+      </div>
+      <div><h4>Serviços</h4><ul><li><a href="roteiros.html">Roteiros e paradas</a></li><li><a href="gastronomia.html">Gastronomia</a></li><li><a href="eventos.html">Locação e eventos</a></li><li><a href="contato.html#reservar">Reservar passeio</a></li></ul></div>
+      <div><h4>Empresa</h4><ul><li><a href="#">Trabalhe conosco</a></li><li><a href="#">Seja parceiro</a></li></ul></div>
+      <div><h4>Suporte</h4><ul><li><a href="#">Política de privacidade</a></li><li><a href="#">Termos de uso</a></li><li><a href="#">Política de reembolso</a></li><li><a href="https://wa.me/5524999450356" target="_blank" rel="noopener">Central de ajuda</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <div class="cadastur"><img src="img/icones/cadastur.png" alt="" style="filter:brightness(0) invert(1);" />Cadastur · Ministério do Turismo</div>
+        <span>© 2026 Escuna Tânia · Paraty, RJ</span>
+      </div>
+      <div class="socials"><a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8a4 4 0 0 1 3.4 3.4z"/></svg></a><a href="#" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.4L2 22l4.7-1.6a11 11 0 0 0 13.8-16.9z"/></svg></a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5524999450356" class="fab-wa" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.4L2 22l4.7-1.6a11 11 0 0 0 13.8-16.9z"/></svg>
+</a>
+
+<script src="app.js"></script>
+</body>
+</html>

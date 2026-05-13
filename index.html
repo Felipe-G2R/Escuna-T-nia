@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><script>(function(){
+  function makeStore(){
+    var data = {};
+    var api = {
+      getItem: function(k){ return Object.prototype.hasOwnProperty.call(data, k) ? data[k] : null; },
+      setItem: function(k, v){ data[k] = String(v); },
+      removeItem: function(k){ delete data[k]; },
+      clear: function(){ data = {}; },
+      key: function(i){ return Object.keys(data)[i] || null; }
+    };
+    Object.defineProperty(api, 'length', { get: function(){ return Object.keys(data).length; } });
+    return api;
+  }
+  function tryShim(name){
+    var works = false;
+    try { works = !!window[name] && typeof window[name].getItem === 'function'; void window[name].length; }
+    catch (_) { works = false; }
+    if (works) return;
+    try { Object.defineProperty(window, name, { configurable: true, value: makeStore() }); }
+    catch (_) { try { window[name] = makeStore(); } catch (__) {} }
+  }
+  tryShim('localStorage');
+  tryShim('sessionStorage');
+})();</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Escuna Tânia · Passeio de luxo náutico em Paraty</title>
+<meta name="description" content="A escuna mais completa de Paraty. Roteiro de 6 horas com 6 paradas em águas cristalinas, gastronomia caiçara autoral, hidromassagem e ar-condicionado. Cadastur." />
+<link rel="icon" href="img/icones/logo-32.jpg" />
+<link rel="apple-touch-icon" href="img/icones/logo-180.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar" role="banner">
+  <a class="brand" href="index.html">
+    <img src="img/icones/logo-180.jpg" alt="Logo Escuna Tânia" />
+    <span class="brand-text">
+      <span class="brand-name">Escuna Tânia</span>
+      <span class="brand-tag">Paraty · Rio de Janeiro</span>
+    </span>
+  </a>
+  <nav aria-label="Principal">
+    <a href="index.html" class="active">Início</a>
+    <a href="roteiros.html">Roteiros</a>
+    <a href="gastronomia.html">Gastronomia</a>
+    <a href="eventos.html">Eventos</a>
+    <a href="contato.html#reservar" class="cta">Reservar</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Abrir menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M3 6h18M3 12h18M3 18h18"/>
+    </svg>
+  </button>
+</header>
+
+<!-- ===== HERO com vídeo VERTICAL liquid glass ===== -->
+<section class="hero hero-split" id="hero">
+  <div class="bg bg-strips" aria-hidden="true">
+    <div class="hero-strip"><img src="img/frames/hero-1.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/hero-2.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/hero-3.jpg" alt="" /></div>
+    <div class="hero-strip"><img src="img/frames/hero-4.jpg" alt="" /></div>
+  </div>
+  <div class="content content-split">
+    <div class="hero-text">
+      <span class="eyebrow">Paraty · Rio de Janeiro</span>
+      <h1>O ápice do<br><em>luxo náutico</em> em Paraty.</h1>
+      <p class="lede">Seis horas navegando. Seis paradas em ilhas e enseadas de água cristalina. Gastronomia caiçara autoral, hidromassagem aquecida, ar-condicionado nas áreas internas.</p>
+      <div class="actions">
+        <a href="contato.html#reservar" class="btn btn-primary btn-lg">Reservar passeio</a>
+        <a href="roteiros.html" class="btn btn-glass btn-lg">Ver roteiro completo</a>
+      </div>
+
+      <!-- Reserve panel · liquid glass dark -->
+      <form class="rsv" data-reserve-form aria-label="Reservar passeio">
+        <div class="rsv-field">
+          <span class="rsv-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+          </span>
+          <div class="rsv-content">
+            <label for="r-date">Data</label>
+            <input id="r-date" name="date" type="date" required />
+          </div>
+        </div>
+
+        <div class="rsv-field">
+          <span class="rsv-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <div class="rsv-content">
+            <label for="r-people">Passageiros</label>
+            <div class="rsv-select-wrap">
+              <select id="r-people" name="people">
+                <option value="2 adultos">2 adultos</option>
+                <option value="4 adultos">4 adultos</option>
+                <option value="6 adultos">6 adultos</option>
+                <option value="Grupo (10+)">Grupo (10+)</option>
+              </select>
+              <svg class="rsv-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="rsv-field">
+          <span class="rsv-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+          </span>
+          <div class="rsv-content">
+            <label for="r-package">Pacote</label>
+            <div class="rsv-select-wrap">
+              <select id="r-package" name="package">
+                <option value="Passeio padrão">Passeio padrão</option>
+                <option value="Área VIP">Com área VIP</option>
+                <option value="Hidromassagem privativa">Com hidromassagem</option>
+              </select>
+              <svg class="rsv-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="rsv-submit">
+          <span>Consultar</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Vídeo vertical (formato celular) com bordas liquid glass -->
+    <div class="hero-video-wrap">
+      <div class="video-portrait hero-portrait-frame">
+        <video id="hero-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="img/tania-pic.jpg" aria-label="Prévia da Escuna Tânia em Paraty">
+          <source src="video/tania-previa.mp4" type="video/mp4" />
+        </video>
+        <div class="vp-caption">
+          <strong>Prévia da Tânia</strong>
+          <span style="opacity:0.85;">A bordo · águas de Paraty</span>
+        </div>
+        <button id="hero-audio-toggle" class="glass-pill glass-pill-dark" type="button" aria-pressed="false" style="position:absolute;top:18px;right:18px;cursor:pointer;border:1px solid rgba(255,255,255,0.3);z-index:3;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <span class="label">Ativar som</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="section-tight">
+  <div class="wrap reveal">
+    <div class="stats">
+      <div class="stat"><div class="value">6<em>h</em></div><div class="label">de navegação</div></div>
+      <div class="stat"><div class="value">6</div><div class="label">paradas em ilhas</div></div>
+      <div class="stat"><div class="value">100<em>%</em></div><div class="label">tripulação habilitada pela Marinha</div></div>
+      <div class="stat"><div class="value"><em>Cadastur</em></div><div class="label">certificada · MTur</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PILARES ===== -->
+<section class="section" id="pilares">
+  <div class="wrap">
+    <div class="reveal text-center mb-6" style="max-width:680px;margin:0 auto 80px;">
+      <span class="eyebrow">Três modos de viver a Tânia</span>
+      <h2 style="margin-top:18px;">Um barco. <em>Três experiências</em> distintas.</h2>
+    </div>
+    <div class="pillars">
+      <article class="pillar reveal lift-on-hover">
+        <div class="num">01 · LUXO</div>
+        <h3>Ápice do luxo náutico</h3>
+        <p>O conforto absoluto encontra o respeito ao mar. Espaços climatizados, decks amplos, gastronomia autoral e área VIP exclusiva — um passeio que custa o que vale.</p>
+        <a href="roteiros.html" class="btn btn-ghost" style="margin-top:auto;align-self:flex-start;">Ver roteiros →</a>
+      </article>
+      <article class="pillar reveal lift-on-hover">
+        <div class="num">02 · EVENTOS</div>
+        <h3>Eventos inesquecíveis</h3>
+        <p>Mini-weddings ao pôr do sol, eventos corporativos premiando equipes, lançamentos de produto, captação publicitária. A escuna vira o cenário — e o motivo.</p>
+        <a href="eventos.html" class="btn btn-ghost" style="margin-top:auto;align-self:flex-start;">Ver locação →</a>
+      </article>
+      <article class="pillar reveal lift-on-hover">
+        <div class="num">03 · AVENTURA</div>
+        <h3>Aventura sem limites</h3>
+        <p>Snorkel em águas cristalinas, mergulho na Lagoa Azul, toboágua de bordo, encontro com tartarugas na Ilha dos Cocos. Para quem quer mar de verdade.</p>
+        <a href="roteiros.html#infraestrutura" class="btn btn-ghost" style="margin-top:auto;align-self:flex-start;">Ver atividades →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFERENCIAIS — 9 cards ===== -->
+<section class="section section-cream" id="diferenciais">
+  <div class="wrap">
+    <div class="reveal mb-4" style="max-width:680px;">
+      <span class="eyebrow">Infraestrutura completa</span>
+      <h2>Nove diferenciais que <em>nenhuma escuna oferece junta</em>.</h2>
+    </div>
+    <div class="features">
+      <div class="feature reveal lift-on-hover">
+        <div class="ico"><img src="img/icones/passeio-luxo.png" alt="" /></div>
+        <h4>Hidromassagem aquecida</h4>
+        <p>Banheira com hidro a bordo. Pode ser privatizada por R$ 400 — relaxe enquanto navega.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico"><img src="img/icones/banheiro.png" alt="" /></div>
+        <h4>Ar-condicionado nas áreas internas</h4>
+        <p>Salão climatizado nos dias quentes, ideal para quem viaja com crianças ou idosos.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico"><img src="img/icones/drinks.png" alt="" /></div>
+        <h4>Gastronomia caiçara autoral</h4>
+        <p>Banana da terra, taioba, gengibre, frutos do mar — culinária local em pratos individuais.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico"><img src="img/icones/snorkel.png" alt="" /></div>
+        <h4>Snorkel & mergulho</h4>
+        <p>Equipamentos a bordo, paradas dedicadas em Lagoa Azul, Ilha dos Cocos e Praia Vermelha.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico"><img src="img/icones/ancora.png" alt="" /></div>
+        <h4>Banheiros amplos com WC</h4>
+        <p>Dois banheiros completos com chuveiro, fraldário e área de troca para famílias.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico" style="font-size:24px;">💡</div>
+        <h4>Iluminação LED noturna</h4>
+        <p>Sistema de luzes próprio para eventos ao pôr do sol e travessias após o pôr-do-sol.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico" style="font-size:24px;">🛏️</div>
+        <h4>Massagem a bordo</h4>
+        <p>Profissionais credenciados disponíveis sob agendamento prévio (48h de antecedência).</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico" style="font-size:24px;">📸</div>
+        <h4>Fotógrafo profissional</h4>
+        <p>Cobertura completa do passeio. Fotos editadas entregues digitalmente em até 7 dias.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico" style="font-size:24px;">🛥️</div>
+        <h4>Fretamento completo</h4>
+        <p>Reserve a escuna inteira para até 90 pessoas. Roteiro adaptado, gastronomia personalizada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MANIFESTO ===== -->
+<section class="section">
+  <div class="wrap reveal">
+    <div class="manifesto">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">Manifesto</span>
+      <blockquote>
+        Esqueça tudo o que você conhece sobre <em>passeios de barco</em>.<br>
+        Aqui, o luxo está no acolhimento, no conforto absoluto e no respeito ao mar.
+      </blockquote>
+      <cite>— Isake &amp; Cristiane Veloso · fundadores</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE TEASER (two-col with video VERTICAL liquid glass) ===== -->
+<section class="section section-cream" id="sobre-resumo">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="reveal" style="display:flex;justify-content:center;align-items:center;">
+        <div class="video-portrait">
+          <video data-viewport-play muted loop playsinline preload="metadata" poster="img/tania-pic.jpg">
+            <source src="video/tania-interna.mp4" type="video/mp4" />
+          </video>
+          <div class="vp-caption">
+            <strong>A escuna por dentro</strong>
+            <span style="opacity:0.85;">Tour 360° das áreas climatizadas</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Origem da Tânia</span>
+        <h2 style="margin-top:18px;">Uma <em>história de família</em> em forma de embarcação.</h2>
+        <p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.7;color:var(--ink-2);">A Escuna Tânia nasceu de um sonho de Isake e Cristiane Veloso: oferecer em Paraty o passeio náutico que sempre quiseram fazer — e nunca encontraram. O nome é uma homenagem à mãe deles, <strong style="color:var(--ink);">Tânia Veloso</strong> — uma homenagem que se tornou também um padrão: o nível de cuidado que ela dedicava à família passou a ser o nível de cuidado que a embarcação dedica a cada passageiro.</p>
+        <p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.7;color:var(--ink-2);">Em 2020, ao operarem embarcações menores na região, decidiram que Paraty merecia algo maior. Transformaram aquele sonho na <strong style="color:var(--ink);">maior escuna de luxo da cidade</strong> — com infraestrutura comparável à de iates particulares. A Tânia hoje recebe até <strong style="color:var(--ink);">90 passageiros</strong> com a tranquilidade que recebia 20.</p>
+        <p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.7;color:var(--ink-2);">Hoje somos <strong style="color:var(--ink);">Cadastur certificada</strong>, com tripulação treinada em segurança marítima, e operamos com responsabilidade ambiental — paradas em áreas regulamentadas, parceria com cooperativas locais, descarte adequado de resíduos.</p>
+        <a href="contato.html#reservar" class="btn btn-ghost mt-2">Reservar seu passeio →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== A EMBARCAÇÃO POR DENTRO (4 áreas) ===== -->
+<section class="section" id="embarcacao-dentro">
+  <div class="wrap">
+    <div class="reveal text-center mb-6" style="max-width:680px;margin:0 auto 80px;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">A embarcação por dentro</span>
+      <h2 style="margin-top:18px;">O que faz a Tânia <em>ser a Tânia</em>.</h2>
+      <p style="font-family:var(--font-sans);font-size:15px;color:var(--ink-soft);margin-top:18px;">Quatro áreas que mais surpreendem quem embarca pela primeira vez.</p>
+    </div>
+    <div class="features" style="grid-template-columns:repeat(4,1fr);">
+      <div class="feature reveal lift-on-hover">
+        <div class="ico"><img src="img/icones/passeio-luxo.png" alt="" /></div>
+        <h4>Suíte VIP com hidromassagem</h4>
+        <p>Ambiente reservado com banheira aquecida e vista para o deck superior.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico"><img src="img/icones/banheiro.png" alt="" /></div>
+        <h4>Salão climatizado</h4>
+        <p>Área interna com ar-condicionado, sofás e mesas para refeições servidas a bordo.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico" style="font-size:22px;">☀️</div>
+        <h4>Deck solarium</h4>
+        <p>Espreguiçadeiras, área de banho de sol e toboágua direto para o mar.</p>
+      </div>
+      <div class="feature reveal lift-on-hover">
+        <div class="ico"><img src="img/icones/drinks.png" alt="" /></div>
+        <h4>Cozinha &amp; bar</h4>
+        <p>Galé equipada profissionalmente, bar com coquetelaria autoral em tempo real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OS QUATRO PILARES ===== -->
+<section class="section section-cream" id="quatro-pilares">
+  <div class="wrap">
+    <div class="reveal text-center mb-6" style="max-width:720px;margin:0 auto 80px;">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">Os quatro pilares</span>
+      <h2 style="margin-top:18px;">Os pilares que <em>definem</em> a Tânia.</h2>
+    </div>
+    <div class="pillars" style="grid-template-columns:repeat(4,1fr);">
+      <article class="pillar reveal lift-on-hover">
+        <div class="num">01 · EXPERIÊNCIA</div>
+        <h3>Cuidado em cada detalhe</h3>
+        <p>Tripulação treinada, atendimento personalizado, ritmo respeitoso. Cada passageiro é tratado pelo nome.</p>
+      </article>
+      <article class="pillar reveal lift-on-hover">
+        <div class="num">02 · GASTRONOMIA</div>
+        <h3>Sabor caiçara local</h3>
+        <p>Cardápio autoral com ingredientes da região. Peixe pescado no dia, frutas tropicais, drinks com cachaça artesanal.</p>
+      </article>
+      <article class="pillar reveal lift-on-hover">
+        <div class="num">03 · RESPONSABILIDADE</div>
+        <h3>Respeito ao mar</h3>
+        <p>Paradas em áreas regulamentadas, descarte zero no mar, parceria com cooperativas locais de pesca e artesanato.</p>
+      </article>
+      <article class="pillar reveal lift-on-hover">
+        <div class="num">04 · INFRAESTRUTURA</div>
+        <h3>Estrutura inédita</h3>
+        <p>Hidromassagem, ar-condicionado, dois banheiros completos, deck solarium, toboágua, suíte VIP — único na região.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEPOIMENTOS ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="reveal text-center mb-4" style="max-width:680px;margin:0 auto;">
+      <span class="eyebrow">Quem já navegou conosco</span>
+      <h2>Cinco estrelas, <em>centenas de vezes</em>.</h2>
+    </div>
+    <div class="testimonials">
+      <article class="testimonial reveal lift-on-hover">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"Quem ama Paraty e seu mar e está procurando passeio de qualidade, com muito conforto, embarcação maravilhosa e atendimento impecável, esse é o passeio certo. Recomendo, não tem como esquecer."</blockquote>
+        <div class="who">
+          <div class="avatar">H</div>
+          <div class="who-info"><strong>Hóspede da Tânia</strong><span>Avaliação Google · Paraty</span></div>
+        </div>
+      </article>
+      <article class="testimonial reveal lift-on-hover">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"Recomendo a todos pelo padrão de qualidade impecável, embarcação maravilhosa, conforto incomparável, tripulação atenciosa, alimentação maravilhosa e bem servida. Inesquecível."</blockquote>
+        <div class="who">
+          <div class="avatar">H</div>
+          <div class="who-info"><strong>Hóspede da Tânia</strong><span>Avaliação Google · Paraty</span></div>
+        </div>
+      </article>
+      <article class="testimonial reveal lift-on-hover">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"Passeio de altíssima qualidade. A Lagoa Azul ficou ainda mais bonita com a parada da Tânia. O almoço foi de chef. Saímos com a sensação de ter vivido algo único."</blockquote>
+        <div class="who">
+          <div class="avatar">H</div>
+          <div class="who-info"><strong>Hóspede da Tânia</strong><span>Avaliação Google · Paraty</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="wrap-narrow">
+    <div class="reveal text-center mb-4">
+      <span class="eyebrow" style="margin-left:auto;margin-right:auto;">Perguntas frequentes</span>
+      <h2>O que <em>quase todo mundo</em> pergunta.</h2>
+    </div>
+    <div class="faq reveal">
+      <details class="faq-item">
+        <summary>Qual o horário de embarque e desembarque?</summary>
+        <div class="answer">Embarque às <strong>10h</strong>, retorno previsto para <strong>16h</strong>. Pedimos chegada com 15 minutos de antecedência no centro histórico de Paraty — o endereço exato do cais é enviado após a confirmação da reserva. Tolerância máxima de 15 minutos após o horário de saída.</div>
+      </details>
+      <details class="faq-item">
+        <summary>O passeio inclui alimentação e bebidas?</summary>
+        <div class="answer">Inclui <strong>almoço completo</strong> com pratos individuais do Menu do Chef (opções de peixe, frutos do mar e vegetariano), entradas durante a manhã, água e sucos naturais. Drinks autorais, cervejas e vinhos são vendidos à parte no bar de bordo.</div>
+      </details>
+      <details class="faq-item">
+        <summary>É seguro? Crianças podem ir?</summary>
+        <div class="answer">Sim. Operação certificada pela <strong>Marinha do Brasil</strong> e <strong>Cadastur</strong>, tripulação treinada, coletes salva-vidas para todas as idades, fraldário a bordo. Crianças até 5 anos não pagam; de 6 a 10 anos pagam meia-entrada. Recomendamos protetor solar e uma muda de roupa seca.</div>
+      </details>
+      <details class="faq-item">
+        <summary>E se o tempo não estiver bom no dia?</summary>
+        <div class="answer">A segurança vem primeiro. Em caso de mau tempo que inviabilize a navegação (definido pela Marinha), <strong>remarcamos sem custo</strong> para outra data de sua escolha. Chuvas leves não cancelam o passeio — a escuna tem áreas cobertas e climatizadas.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Como funciona a área VIP?</summary>
+        <div class="answer">A <strong>área VIP</strong> custa R$ 50 adicionais por pessoa e dá acesso ao deck superior privativo, espreguiçadeiras reservadas e <strong>garrafa de espumante</strong> cortesia. A <strong>hidromassagem privativa</strong> é separada (R$ 400 por sessão para até 4 pessoas), reservada com antecedência.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CREDENCIAIS ===== -->
+<section class="section section-dark" id="credenciais">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:center;">
+      <div class="reveal">
+        <span class="eyebrow">Credibilidade institucional</span>
+        <h2 style="color:white;">Operação <em>certificada e responsável</em>.</h2>
+        <p style="font-family:var(--font-sans);font-size:15px;color:rgba(255,255,255,0.72);line-height:1.7;max-width:520px;">A Escuna Tânia é certificada pelo Cadastur do Ministério do Turismo, opera dentro das normas da Marinha do Brasil, tem tripulação treinada em segurança marítima e adota práticas sustentáveis em todas as paradas — porque o mar que recebe a Tânia precisa estar lá amanhã também.</p>
+        <div style="display:flex;gap:18px;margin-top:32px;flex-wrap:wrap;">
+          <div class="glass-pill glass-pill-dark"><strong style="color:white;">✓</strong> Cadastur do MTur</div>
+          <div class="glass-pill glass-pill-dark"><strong style="color:white;">✓</strong> Marinha do Brasil</div>
+          <div class="glass-pill glass-pill-dark"><strong style="color:white;">✓</strong> Tripulação treinada</div>
+          <div class="glass-pill glass-pill-dark"><strong style="color:white;">✓</strong> Práticas sustentáveis</div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div style="background:rgba(255,255,255,0.08);padding:48px 32px;border-radius:22px;border:1px solid rgba(255,255,255,0.16);backdrop-filter:blur(20px);">
+          <img src="img/icones/cadastur.png" alt="Selo Cadastur — Ministério do Turismo" style="max-width:200px;margin:0 auto;filter:brightness(0) invert(1);opacity:0.92;" />
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.10em;color:rgba(255,255,255,0.55);margin-top:24px;">Cadastur · Ministério do Turismo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="brand-block">
+        <img class="logo" src="img/icones/logo-192.jpg" alt="Logo Escuna Tânia" />
+        <h3>Escuna Tânia</h3>
+        <p>O luxo náutico em Paraty — gastronomia, conforto e respeito ao mar.</p>
+      </div>
+      <div>
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="roteiros.html">Roteiros e paradas</a></li>
+          <li><a href="gastronomia.html">Gastronomia</a></li>
+          <li><a href="eventos.html">Locação e eventos</a></li>
+          <li><a href="contato.html#reservar">Reservar passeio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Trabalhe conosco</a></li>
+          <li><a href="#">Seja parceiro</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Suporte</h4>
+        <ul>
+          <li><a href="#">Política de privacidade</a></li>
+          <li><a href="#">Termos de uso</a></li>
+          <li><a href="#">Política de reembolso</a></li>
+          <li><a href="https://wa.me/5524999450356" target="_blank" rel="noopener">Central de ajuda</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <div class="cadastur">
+          <img src="img/icones/cadastur.png" alt="" style="filter:brightness(0) invert(1);" />
+          Cadastur · Ministério do Turismo
+        </div>
+        <span>© 2026 Escuna Tânia · Paraty, RJ</span>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8a4 4 0 0 1 3.4 3.4z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 6.5a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.56.46A2.78 2.78 0 0 0 1.5 6.5 29 29 0 0 0 1 12a29 29 0 0 0 .5 5.5 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.56-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.5z"/><polygon points="10 15 15 12 10 9" fill="#1a2c37"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.4L2 22l4.7-1.6a11 11 0 0 0 13.8-16.9zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-2.8 1 .9-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.5.1a6.6 6.6 0 0 1-3.2-2.9c-.2-.4 0-.5.2-.7l.5-.5.2-.4-.1-.4-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1c0 1.2 1 2.4 1.1 2.6a8.6 8.6 0 0 0 3.3 2.9c.5.2.8.3 1.1.4a2.6 2.6 0 0 0 1.2.1c.4-.1 1.2-.5 1.4-1s.2-.9.2-1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB WhatsApp -->
+<a href="https://wa.me/5524999450356?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Escuna%20T%C3%A2nia." class="fab-wa" aria-label="Falar no WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.4L2 22l4.7-1.6a11 11 0 0 0 13.8-16.9zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-2.8 1 .9-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.5.1a6.6 6.6 0 0 1-3.2-2.9c-.2-.4 0-.5.2-.7l.5-.5.2-.4-.1-.4-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1c0 1.2 1 2.4 1.1 2.6a8.6 8.6 0 0 0 3.3 2.9c.5.2.8.3 1.1.4a2.6 2.6 0 0 0 1.2.1c.4-.1 1.2-.5 1.4-1s.2-.9.2-1z"/></svg>
+</a>
+
+<script src="app.js"></script>
+</body>
+</html>
